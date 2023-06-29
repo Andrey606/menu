@@ -1,0 +1,51 @@
+<!-- Other code... -->
+
+<nav>
+  <!-- Other navigation links... -->
+  <% if current_user %>
+    <!-- Display a link to log out if an admin is logged in -->
+    <%= link_to "Logout", admin_logout_path, method: :delete %>
+  <% else %>
+    <!-- Display a link to the login page if no admin is logged in -->
+    <%= link_to "Login", admin_login_path %>
+  <% end %>
+</nav>
+
+<!-- Other code... -->
+
+
+<div class="container">
+  <h1 class="text-center">Upload PDF File</h1>
+
+  <%= form_with(model: @pdf_file, url: admin_pdf_files_path, local: true) do |form| %>
+    <% if @pdf_file.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@pdf_file.errors.count, "error") %> prohibited this PDF file from being saved:</h2>
+        <ul>
+          <% @pdf_file.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :file %>
+      <%= form.file_field :file, class: "form-control-file" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :locale %>
+      <%= form.select :locale, I18n.available_locales.map { |l| [I18n.t(:language, locale: l), l.to_s] }, class: "form-control-file" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Upload", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
