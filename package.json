@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Andrey606/menu/issues"
   },
-  "homepage": "https://github.com/Andrey606/menu#readme"
+  "homepage": "https://github.com/Andrey606/menu#readme",
+  "dependencies": {
+    "webpack": "^5.88.1"
+  }
 }
