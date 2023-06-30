@@ -10,3 +10,5 @@ link: https://rails-7-andrews-menu-app-e5f557ba9b42.herokuapp.com
 admin link: https://rails-7-andrews-menu-app-e5f557ba9b42.herokuapp.com/?admin/pdf_files
 email: admin@gmail.com
 password: admin@gmail.com
+
+logs: heroku logs --tail
