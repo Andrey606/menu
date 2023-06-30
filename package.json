@@ -23,5 +23,8 @@
   "homepage": "https://github.com/Andrey606/menu#readme",
   "dependencies": {
     "webpack": "^5.88.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
   }
 }
