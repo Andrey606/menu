@@ -1,27 +1,38 @@
-<div class="language-selector">
-    <%= link_to t('layouts.language.english'), url_for(locale: :en) %>
-    <%= link_to t('layouts.language.ukrainian'), url_for(locale: :uk) %>
-</div>
+<script>
+  function resize() {
+    const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    if (screenWidth > 981) { // iphone SE
+      document.getElementById('full_size').classList.remove('d-none')
+      document.getElementById('mobile').classList.add('d-none')
+    } else {
+      document.getElementById('full_size').classList.add('d-none')
+      document.getElementById('mobile').classList.remove('d-none')
+    }
+  }
+
+  window.addEventListener('resize', function() {
+    resize();
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    resize();
+  });
+</script>
 
 <div class="container">
-  <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-md-6">
-      <div class="text-center">
-        <h1><%= t('menu.header')%></h1>
-        <% @pdf_files.each do |pdf_file| %>
-          <%
-=begin%>
- <%= link_to pdf_file.name, pdf_file.file_url, class: "btn btn-primary btn-block btn-lg mb-2", target: "_blank" %> 
-<%
-=end%>
-          <%
-=begin%>
- <%= link_to pdf_file.name, open_pdf_path(pdf_file), class: "btn btn-primary btn-block btn-lg mb-2", target: "_blank" %> 
-<%
-=end%>
-          <%= link_to pdf_file.name, pdf_file.file_url, class: "btn btn-primary btn-block btn-lg mb-2 open-pdf-link", target: "_blank" %>
-        <% end %>
-      </div>
+  <div class="d-flex justify-content-end align-items-start">
+    <div class="language-selector">
+      <%= link_to t('layouts.language.english'), url_for(locale: :en) %>
+      <%= ' | ' %>
+      <%= link_to t('layouts.language.ukrainian'), url_for(locale: :uk) %>
     </div>
   </div>
+</div>
+
+<div id='full_size'> 
+  <%= render 'pages/tamplates/full_size', locals: { pdf_files: @pdf_files } %>
+</div>
+<div id='mobile' class='d-none'> 
+  <%= render 'pages/tamplates/mobile', locals: { pdf_files: @pdf_files } %>
 </div>
