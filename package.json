@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/Andrey606/menu#readme",
   "dependencies": {
-    "webpack": "^5.88.1"
+    "@rails/webpacker": "5.4.4",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
     "heroku": "^0.2.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3"
   }
 }
