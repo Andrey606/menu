@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+git push origin main
+git push heroku main
+heroku run rake db:migrate
+heroku run rails console
+-> User.create! email: 'admin@gmail.com', password: 'admin@gmail.com'
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+link: https://rails-7-andrews-menu-app-e5f557ba9b42.herokuapp.com
+admin link: https://rails-7-andrews-menu-app-e5f557ba9b42.herokuapp.com/?admin/pdf_files
+email: admin@gmail.com
+password: admin@gmail.com
