@@ -25,6 +25,7 @@
     "webpack": "^5.88.1"
   },
   "devDependencies": {
+    "heroku": "^8.1.9",
     "webpack-cli": "^5.1.4"
   }
 }
