@@ -4,13 +4,13 @@ class Admin::SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
+    if user && user.password == params[:password]
       # Store the admin's id in the session to maintain the login state
       session[:user_id] = user.id
       redirect_to root_path, notice: "Logged in successfully!"
     else
       flash.now[:alert] = "Invalid email or password"
-      render :new
+      redirect_to admin_pdf_files_path
     end
   end
 

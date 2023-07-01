@@ -13,5 +13,6 @@ en:
   fie: File
   name: Name
   upload: Upload
+  enabled_admins: "Enabled admins:"
   menu:
     header: Menu

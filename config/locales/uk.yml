@@ -13,5 +13,6 @@ uk:
   fie: Файл
   name: Назва
   upload: Завантажити
+  enabled_admins: "Доступні адміни:"
   menu:
     header: Меню

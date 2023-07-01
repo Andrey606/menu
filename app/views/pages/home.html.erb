@@ -3,11 +3,11 @@
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
     if (screenWidth > 981) { // iphone SE
-      document.getElementById('full_size').classList.remove('d-none')
-      document.getElementById('mobile').classList.add('d-none')
+      document.querySelectorAll('#full_size').forEach(el => { el.classList.remove('d-none') })
+      document.querySelectorAll('#mobile').forEach(el => { el.classList.add('d-none') })
     } else {
-      document.getElementById('full_size').classList.add('d-none')
-      document.getElementById('mobile').classList.remove('d-none')
+      document.querySelectorAll('#full_size').forEach(el => { el.classList.add('d-none') })
+      document.querySelectorAll('#mobile').forEach(el => { el.classList.remove('d-none') })
     }
   }
 
@@ -22,7 +22,12 @@
 
 <div class='container'>
   <div class="mt-3 text-right">
-    <%= render 'pages/tamplates/lang_bar' %>
+    <div id='full_size'> 
+      <%= render 'pages/tamplates/lang_bar' %>
+    </div>
+    <div id='mobile' class='d-none'> 
+      <%= render 'pages/tamplates/lang_bar_mobile' %>
+    </div>
   </div>
 
   <div class="card border-warning mt-3" style="position: relative;">

@@ -21,7 +21,7 @@
   <div class="card border-warning mt-5 mb-5">
     <div class="card-body text-warning">
       <h5 class="card-title"><%= I18n.t(:debug_info) %></h5>
-      <p class="card-title">Enabled admins:</p>
+      <p class="card-title"><%= I18n.t(:enabled_admins) %></p>
       <% User.all.each do |user|  %>
         <ul>
           <li>
