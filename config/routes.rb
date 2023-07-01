@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'sessions/new'
     post 'sessions/create'
-    get 'sessions/destroy'
+    # get 'sessions/destroy'
     resources :pdf_files, only: [:index, :create, :destroy, :new, :open_pdf]
 
     get 'login', to: 'sessions#new'
