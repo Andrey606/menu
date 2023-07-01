@@ -10,7 +10,7 @@
       <% end %>
 
       <% if current_user %>
-        <%= link_to I18n.t(:logout), admin_logout_path, method: :delete, class: "btn-danger btn btn-primary  mr-3" %>
+        <%= link_to I18n.t(:logout), admin_logout_path, class: "btn-danger btn btn-primary  mr-3" %>
       <% else %>
         <%= link_to I18n.t(:login), admin_login_path, class: "btn-success btn btn-primary mr-3" %>
       <% end %>
