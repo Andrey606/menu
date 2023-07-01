@@ -1,13 +1,9 @@
-<div class="custom-container">
-  <div class="container">
-    <% @pdf_files.each_slice(3).to_a.each do |group| %>
-      <div class="row justify-content-center">
-        <% group.each do |pdf_file| %>
-          <div class="col">
-            <%= link_to pdf_file.name, pdf_file.file_url, class: "btn btn-primary btn-dark btn-xl btn-block btn-lg mb-2 open-pdf-link", target: "_blank" %>
-          </div>
-        <% end %>
+<% @pdf_files.each_slice(3).to_a.each do |group| %>
+  <div class="row justify-content-center">
+    <% group.each do |pdf_file| %>
+      <div class="col">
+        <%= link_to pdf_file.name, pdf_file.file_url, class: "btn btn-primary btn-dark btn-xl btn-block btn-lg mb-2 open-pdf-link", target: "_blank" %>
       </div>
     <% end %>
   </div>
-</div>
+<% end %>

@@ -20,19 +20,24 @@
   });
 </script>
 
-<div class="container">
-  <div class="d-flex justify-content-end align-items-start">
-    <div class="language-selector">
-      <%= link_to t('layouts.language.english'), url_for(locale: :en) %>
-      <%= ' | ' %>
-      <%= link_to t('layouts.language.ukrainian'), url_for(locale: :uk) %>
+<div class='container'>
+  <div class="mt-3 text-right">
+    <%= render 'pages/tamplates/lang_bar' %>
+  </div>
+
+  <div class="card border-warning mt-3" style="position: relative;">
+    <div class="card-body text-warning">
+      <h5 class="card-title"><%= I18n.t(:debug_info) %></h5>
+      <p class="card-text"><a href="<%= admin_pdf_files_path %>"><%= I18n.t(:admin_page) %></a></p>
     </div>
   </div>
 </div>
 
-<div id='full_size'> 
-  <%= render 'pages/tamplates/full_size', locals: { pdf_files: @pdf_files } %>
-</div>
-<div id='mobile' class='d-none'> 
-  <%= render 'pages/tamplates/mobile', locals: { pdf_files: @pdf_files } %>
+<div class="container custom-container">
+  <div id='full_size'> 
+    <%= render 'pages/tamplates/full_size', locals: { pdf_files: @pdf_files } %>
+  </div>
+  <div id='mobile' class='d-none'> 
+    <%= render 'pages/tamplates/mobile', locals: { pdf_files: @pdf_files } %>
+  </div>
 </div>

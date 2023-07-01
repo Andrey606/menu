@@ -1,13 +1,46 @@
-<h1>Login</h1>
+ <div class="container">
+  <div class="d-flex row mt-3">
+    <div class="col text-left">
+      <%= link_to root_path, class: "mr-3 btn btn-primary" do %>
+        <%= I18n.t(:home) %>
+      <% end %>
+    </div>
 
-<%= alert %>
+    <div class="col text-right">
+       <%= render 'pages/tamplates/lang_bar' %>
+    </div>
+  </div>
 
-<%= form_with url: admin_sessions_create_path do |form| %>
-  <%= form.label :email %>
-  <%= form.email_field :email %>
+  <%= alert %>
 
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+  <div class="card border-warning mt-5 mb-5">
+    <div class="card-body text-warning">
+      <h5 class="card-title"><%= I18n.t(:debug_info) %></h5>
+      <p class="card-title">Enabled admins:</p>
+      <% User.all.each do |user|  %>
+        <ul>
+          <li>
+            email: <%= user.email %>
+          </li>
+          <li>
+            password: <%= user.password %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
 
-  <%= form.submit "Log in" %>
-<% end %>
+  <%= form_with url: admin_sessions_create_path do |form| %>
+    <div class="form-group">
+      <%= form.label :email  %>
+      <%= form.email_field :email, class: "form-control", id: "exampleInputEmail1", 'aria-describedby': "emailHelp", placeholder: "Enter email" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-control", id: "exampleInputPassword1", placeholder: "Password" %>
+    </div>
+
+    <%= form.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
+</div>

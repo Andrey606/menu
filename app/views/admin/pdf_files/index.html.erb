@@ -1,34 +1,39 @@
-<!-- Other code... -->
+<div class="container mt-3">
+  <div class="d-flex row">
+    <div class="col text-left">
+      <%= link_to I18n.t(:add_new_menu), new_admin_pdf_file_path, class: "btn btn-primary mb-3" %>
+    </div>
+    
+    <div class="col text-right">
+      <%= link_to root_path, class: "btn btn-primary" do %>
+        <%= I18n.t(:home) %>
+      <% end %>
 
-<nav>
-  <!-- Other navigation links... -->
-  <% if current_user %>
-    <!-- Display a link to log out if an admin is logged in -->
-    <%= link_to "Logout", admin_logout_path, method: :delete %>
-  <% else %>
-    <!-- Display a link to the login page if no admin is logged in -->
-    <%= link_to "Login", admin_login_path %>
-  <% end %>
-</nav>
+      <% if current_user %>
+        <%= link_to I18n.t(:logout), admin_logout_path, method: :delete, class: "btn-danger btn btn-primary  mr-3" %>
+      <% else %>
+        <%= link_to I18n.t(:login), admin_login_path, class: "btn-success btn btn-primary mr-3" %>
+      <% end %>
 
-<!-- Other code... -->
-
-
-<div class="container">
-  <h1 class="text-center">Manage PDF Files</h1>
-
-  <%= link_to "New pdf file", new_admin_pdf_file_path, class: "btn btn-primary mb-3" %>
+       <%= render 'pages/tamplates/lang_bar' %>
+    </div>
+  </div>
 
   <% if @pdf_files.any? %>
-    <ul class="list-group">
-      <% @pdf_files.each do |pdf_file| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to pdf_file.name, pdf_file.file_url, class: "open-pdf-link", target: "_blank" %>
-          <%= pdf_file.locale %>
-          <%= button_to "Delete", admin_pdf_file_path(pdf_file), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-        </li>
-      <% end %>
-    </ul>
+    <% @pdf_files.group_by(&:locale).each do |group| %>
+      <h1 class="text-center"><%= I18n.t(:menu_list, locale: group.first.to_s)  %></h1>
+      <table  class="table">
+        <tbody>
+          <% group.second.each do |pdf_file| %>
+            <tr>
+              <td><%= link_to pdf_file.name, pdf_file.file_url, class: "open-pdf-link", target: "_blank" %></td>
+              <td><%= pdf_file.locale %></td>
+              <td class="text-right"><%= button_to I18n.t(:delete), admin_pdf_file_path(pdf_file), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   <% else %>
     <p>No PDF files uploaded.</p>
   <% end %>
