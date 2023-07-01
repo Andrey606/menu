@@ -1,2 +1,3 @@
-<%= link_to t('layouts.language.english'), url_for(locale: :en), class: "btn btn-secondary" %>
-<%= link_to t('layouts.language.ukrainian'), url_for(locale: :uk), class: "btn btn-secondary" %>
+<% I18n.available_locales.map { |l| [I18n.t(:language, locale: l), l.to_s] }.each do |local| %>
+  <%= link_to local.first, url_for(locale: :en), class: "btn #{ I18n.locale.to_s == local.second ? 'btn-dark' : 'btn-secondary'}" %>
+<% end %>

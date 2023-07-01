@@ -11,7 +11,12 @@
     </div>
   </div>
 
-  <%= alert %>
+
+  <% if alert %>
+    <div class="alert alert-warning mt-5" role="alert">
+      <%= alert %>
+    </div>
+  <% end %>
 
   <div class="card border-warning mt-5 mb-5">
     <div class="card-body text-warning">
