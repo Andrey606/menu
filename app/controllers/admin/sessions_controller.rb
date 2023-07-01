@@ -16,7 +16,6 @@ class Admin::SessionsController < ApplicationController
 
   def destroy
     # Clear the session to log out the admin
-    p 'debug'
     session[:user_id] = nil
     redirect_to root_path, notice: "Logged out successfully!"
   end
