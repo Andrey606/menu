@@ -19,16 +19,16 @@
     </div>
   </div>
 
-  <% if @pdf_files.any? %>
-    <% @pdf_files.group_by(&:locale).each do |group| %>
+  <% if @pdf_objects.any? %>
+    <% @pdf_objects.group_by{ |hash| hash[:locale] }.each do |group| %>
       <h1 class="text-center"><%= I18n.t(:menu_list, locale: group.first.to_s)  %></h1>
       <table  class="table">
         <tbody>
           <% group.second.each do |pdf_file| %>
             <tr>
-              <td><%= link_to pdf_file.name, pdf_file.file_url, class: "open-pdf-link", target: "_blank" %></td>
-              <td><%= pdf_file.locale %></td>
-              <td class="text-right"><%= button_to I18n.t(:delete), admin_pdf_file_path(pdf_file), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
+              <td><%= link_to pdf_file[:name].split('/')[1], pdf_file[:file_url], class: "open-pdf-link", target: "_blank" %></td>
+              <td><%= pdf_file[:locale] %></td>
+              <td class="text-right"><%= button_to I18n.t(:delete), admin_pdf_file_path(pdf_file[:model]), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %></td>
             </tr>
           <% end %>
         </tbody>

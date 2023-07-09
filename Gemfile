@@ -17,6 +17,8 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 
 gem 'byebug'
 
+gem 'aws-sdk-s3'
+
 gem 'jquery-rails'
 
 gem 'carrierwave'

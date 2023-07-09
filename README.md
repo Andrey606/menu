@@ -12,3 +12,15 @@ email: admin@gmail.com
 password: admin@gmail.com
 
 logs: heroku logs --tail
+
+I have used amazon s3 bucket to store pdfs
+
+# get credentials
+
+# edit/create
+EDITOR="nano" rails credentials:edit
+# show
+rails credentials:show
+
+config/credentials.yml.enc - encrypted file
+/config/master.key - file contains key for decryption should not be pushed to git! 

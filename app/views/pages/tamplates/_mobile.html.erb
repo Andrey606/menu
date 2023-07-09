@@ -1,5 +1,5 @@
 <% @pdf_files.each do |pdf_file| %>
   <div class="row justify-content-center">
-      <%= link_to pdf_file.name, pdf_file.file_url, class: "btn btn-primary btn-mobile btn-block btn-dark btn-mobile mb-2 open-pdf-link", target: "_blank" %>
+      <%= link_to pdf_file.name, open_pdf_path(pdf_file), class: "btn btn-primary btn-mobile btn-block btn-dark btn-mobile mb-2 open-pdf-link", target: "_blank" %>
   </div>
 <% end %>
